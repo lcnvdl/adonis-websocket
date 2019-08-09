@@ -9,7 +9,8 @@
  * file that was distributed with this source code.
 */
 
-const WebSocket = require('ws')
+let WebSocket = null
+const WsFactory = requrie('./ws-factory')
 const url = require('url')
 const GE = require('@adonisjs/generic-exceptions')
 const Connection = require('../Connection')
@@ -34,8 +35,11 @@ class Ws {
       serverAttempts: 3,
       clientInterval: 25000,
       clientAttempts: 3,
-      encoder: JsonEncoder
+      encoder: JsonEncoder,
+      implementation: "ws"
     })
+
+    WebSocket = WsFactory.get(this._options)
 
     /**
      * These options are passed directly to the `Websocket.Server` constructor
