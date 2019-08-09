@@ -10,7 +10,7 @@
 */
 
 let WebSocket = null
-const WsFactory = requrie('./ws-factory')
+const WsFactory = require('./ws-factory')
 const url = require('url')
 const GE = require('@adonisjs/generic-exceptions')
 const Connection = require('../Connection')
